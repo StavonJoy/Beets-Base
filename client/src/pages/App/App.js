@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
+
 // import logo from './logo.svg';
 import './App.css';
 import SpotifyWebApi from 'spotify-web-api-js'
 import NavBar from '../../components/NavBar/NavBar'
+import LandingPage from '../LandingPage/LandingPage'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -52,7 +55,10 @@ class App extends Component {
             user={this.state.user}
             handleLogout={this.handleLogout}
         />
-        <a href='http://localhost:8888' > Login to Spotify </a>
+        <Route exact path='/' render={() =>
+          <LandingPage />
+        } />
+        
         <div>
           Now Playing: { this.state.nowPlaying.name }
         </div>
