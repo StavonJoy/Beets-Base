@@ -6,6 +6,7 @@ import './App.css';
 import SpotifyWebApi from 'spotify-web-api-js'
 import NavBar from '../../components/NavBar/NavBar'
 import LandingPage from '../LandingPage/LandingPage'
+import MessageBoard from '../MessageBoard/MessageBoard'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -57,6 +58,9 @@ class App extends Component {
         />
         <Route exact path='/' render={() =>
           <LandingPage />
+        } />
+        <Route exact path='/messages' render={() =>
+          <MessageBoard />
         } />
         
         <div>
