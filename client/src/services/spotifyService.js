@@ -9,8 +9,8 @@ export function getNowPlaying(res){
         //   nowPlaying: { 
         //       name: response.item.name, 
         //       albumArt: response.item.album.images[0].url
-        //     }cd
+        //     }
         // });
       }
-//       ) 
+//       )
 //   }

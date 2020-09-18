@@ -5,8 +5,10 @@ import { Route } from 'react-router-dom'
 import './App.css';
 import SpotifyWebApi from 'spotify-web-api-js'
 import NavBar from '../../components/NavBar/NavBar'
+import * as spotifyService from '../../services/spotifyService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
+
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -35,19 +37,22 @@ class App extends Component {
     return hashParams;
   }
 
-  getNowPlaying(){
-    spotifyApi.getMyCurrentPlaybackState()
-      .then((response) => {
-        console.log(response)
-        this.setState({
-          nowPlaying: { 
-              name: response.item.name, 
-              albumArt: response.item.album.images[0].url
-            }
-        });
-      })
-  }
+  handleGetNowPlaying = async newPlayData => {
+    const response = await spotifyService.getNowPlaying(newPlayData);
+    console.log(response)
+    this.setState({nowPlaying: { 
+      name: response.item.external_urls.name, 
+      albumArt: response.item.album.images[0].url
+    }})
 
+    // this.setState(state => ({
+          // nowPlaying: { 
+          //     name: response.item.name, 
+          //     albumArt: response.item.album.images[0].url
+          //   }
+        // })), () => this.props.history.push('/');
+  
+}
   render() {
     return (
       <>
@@ -69,7 +74,7 @@ class App extends Component {
         <div>
           <img alt='album art' src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
         </div>
-        <button onClick={()=> this.getNowPlaying()}>
+        <button onClick={()=> this.handleGetNowPlaying()}>
           Check Now Playing
         </button>
       </div>
