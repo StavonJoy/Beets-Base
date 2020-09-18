@@ -5,6 +5,10 @@ import { Route } from 'react-router-dom'
 import './App.css';
 import SpotifyWebApi from 'spotify-web-api-js'
 import NavBar from '../../components/NavBar/NavBar'
+import Signup from "../Signup/Signup";
+import Login from "../Login/Login";
+import authService from "../../services/authService";
+import Users from '../Users/Users'
 import * as spotifyService from '../../services/spotifyService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
@@ -22,7 +26,8 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token? true : false,
-      nowPlaying: {name: 'Not Checked', albumArt: ''}
+      nowPlaying: {name: 'Not Checked', albumArt: ''},
+      user: authService.getUser()
     }
   }
   getHashParams() {
@@ -36,6 +41,15 @@ class App extends Component {
     }
     return hashParams;
   }
+
+  handleLogout = () => {
+    authService.logout();
+    this.setState({ user: null });
+  };
+
+  handleSignupOrLogin = () => {
+    this.setState({ user: authService.getUser() });
+  };
 
   handleGetNowPlaying = async newPlayData => {
     const response = await spotifyService.getNowPlaying(newPlayData);
