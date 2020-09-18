@@ -12,5 +12,5 @@ export function getNowPlaying(res){
         //     }cd
         // });
       }
-//       )
+//       ) 
 //   }
