@@ -6,25 +6,40 @@ const NavBar = ({ user, handleLogout }) => {
         {user ?
         <nav>
           <div className="nav-wrapper">
-            <a className=" left" href="/"><img src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
             <ul id="nav-mobile" className="right">
-              <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
-              <li><a className="nav-link-a" href="/messages">Message Board</a></li>
-              <li><a className="nav-link-b" href="/playlists">Playlist Index</a></li>
-              <li><a className="nav-link-a" href="/users">Users</a></li>
-              <li><a className="nav-link-b" href="/profile">My Profile</a></li>
-              <li><a href=" " className="nav-link" onClick={handleLogout}>Log Out</a></li>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/messages">Message Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/playlists">Playlist Index</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">My Profile</a>
+                </li>
+                <li class="nav-item">
+                <a href="/" className="nav-link" onClick={handleLogout}>Log Out</a>
+                </li>
+                <a href="/"><img className="nav-logo" src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
+            </ul>
             </ul>
           </div>
         </nav>
       :
         <nav>
           <div className="nav-wrapper">
-            <a className=" left" href="/"><img src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
-            <ul id="nav-mobile" className="right">
-              <li><a className="nav-link-a" href="/messages">Message Board</a></li>
-              <li><a href='http://localhost:8888' > Login to Spotify </a></li>
-            </ul>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/messages">Message Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href='http://localhost:8888' > Login to Spotify </a>
+            </li>
+            <a href="/"><img className="nav-logo" src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
+          </ul>
           </div>
         </nav>
         }

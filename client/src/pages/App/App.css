@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App-logo {
@@ -39,4 +40,16 @@
 
 div, button {
   margin: 15px
+}
+
+.nav-link {
+  font-size: 20px;
+  color: black;
+}
+.nav-link:hover {
+  color: magenta;
+}
+
+.nav-logo {
+  border-radius: 5px;
 }
