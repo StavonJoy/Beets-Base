@@ -55,7 +55,7 @@ class App extends Component {
     const response = await spotifyService.getNowPlaying(newPlayData);
     console.log(response)
     this.setState({nowPlaying: { 
-      name: response.item.external_urls.name, 
+      name: response.item.name, 
       albumArt: response.item.album.images[0].url
     }})
 
