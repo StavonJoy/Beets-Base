@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import SpotifyWebApi from 'spotify-web-api-js'
+import NavBar from '../../components/NavBar/NavBar'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -45,7 +46,12 @@ class App extends Component {
 
   render() {
     return (
+      <>
       <div className="App">
+        <NavBar
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+        />
         <a href='http://localhost:8888' > Login to Spotify </a>
         <div>
           Now Playing: { this.state.nowPlaying.name }
@@ -57,6 +63,7 @@ class App extends Component {
           Check Now Playing
         </button>
       </div>
+      </>
     );
   }
 }
