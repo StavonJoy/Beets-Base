@@ -26,7 +26,12 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token? true : false,
-      nowPlaying: {name: 'Not Checked', albumArt: ''},
+      nowPlaying: {
+        name: 'Not Checked', 
+        albumArt: '', 
+        artist: 'Not Checked'},
+      spotifyAlbums: [],
+      userAlbums: [],
       user: authService.getUser()
     }
   }
@@ -56,17 +61,29 @@ class App extends Component {
     console.log(response)
     this.setState({nowPlaying: { 
       name: response.item.name, 
-      albumArt: response.item.album.images[0].url
-    }})
+      albumArt: response.item.album.images[0].url,
+      artist: response.item.artists[0].name
+      // this.setState(state => ({
+            // nowPlaying: { 
+            //     name: response.item.name, 
+            //     albumArt: response.item.album.images[0].url
+            //   }
+          // })), () => this.props.history.push('/');
 
-    // this.setState(state => ({
-          // nowPlaying: { 
-          //     name: response.item.name, 
-          //     albumArt: response.item.album.images[0].url
-          //   }
-        // })), () => this.props.history.push('/');
-  
-}
+    }})}  
+
+  handleTestElvis = async elvisData => {
+    const response = await spotifyService.testElvis(elvisData);
+    console.log(response)
+    // this.setState({ spotifyAlbums: [response.items]})
+    console.log('hi there')
+  }
+
+  manipulateAlbums () {
+    console.log('hi')
+  }
+
+
   render() {
     return (
       <>
@@ -83,7 +100,7 @@ class App extends Component {
         } />
         
         <div>
-          Now Playing: { this.state.nowPlaying.name }
+          Now Playing: { this.state.nowPlaying.name } by { this.state.nowPlaying.artist }
         </div>
         <div>
           <img alt='album art' src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
@@ -91,6 +108,7 @@ class App extends Component {
         <button onClick={()=> this.handleGetNowPlaying()}>
           Check Now Playing
         </button>
+        <button onClick={()=> this.handleTestElvis()}>Elvis Albums</button>
       </div>
       </>
     );
