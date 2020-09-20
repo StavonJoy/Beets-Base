@@ -1,7 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-js'
 const spotifyApi = new SpotifyWebApi();
 
-export function getNowPlaying(res){
+export function getNowPlaying(){
     return spotifyApi.getMyCurrentPlaybackState()
     //   .then(res => res.json())
         // console.log(response)
@@ -15,4 +15,6 @@ export function getNowPlaying(res){
 //       )
 //   }
 
-// export function 
+export async function testElvis() {
+    return await spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE');
+}
