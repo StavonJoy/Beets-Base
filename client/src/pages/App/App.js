@@ -33,7 +33,7 @@ class App extends Component {
         artist: 'Not Checked'},
       spotifyAlbums: [],
       userAlbums: [],
-      messages: []
+      messages: [],
       user: authService.getUser()
     }
   }
