@@ -13,6 +13,7 @@ import * as messageAPI from '../../services/messages-api'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
+import ArtistSearch from '../ArtistSearch/ArtistSearch';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -121,6 +122,9 @@ class App extends Component {
             history={history}
             handleSignupOrLogin={this.handleSignupOrLogin}
           />
+        } />
+        <Route exact path ='/artistSearch' render= {() =>
+          <ArtistSearch />
         } />
         <div>
           Now Playing: { this.state.nowPlaying.name } by { this.state.nowPlaying.artist }
