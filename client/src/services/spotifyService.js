@@ -15,12 +15,6 @@ export function getNowPlaying(){
 //       )
 //   }
 
-export function testElvis() {
-    spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function (err, data) {
-        if (err) {
-            return console.error(err);
-        }
-        console.log('Artist albums', data);
-        return data
-      });
+export async function testElvis() {
+    return await spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE');
 }

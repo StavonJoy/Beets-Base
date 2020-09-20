@@ -63,20 +63,13 @@ class App extends Component {
       name: response.item.name, 
       albumArt: response.item.album.images[0].url,
       artist: response.item.artists[0].name
-      // this.setState(state => ({
-            // nowPlaying: { 
-            //     name: response.item.name, 
-            //     albumArt: response.item.album.images[0].url
-            //   }
-          // })), () => this.props.history.push('/');
-
-    }})}  
+    }})
+  }  
 
   handleTestElvis = async elvisData => {
     const response = await spotifyService.testElvis(elvisData);
-    console.log(response)
-    // this.setState({ spotifyAlbums: [response.items]})
-    console.log('hi there')
+    console.log(response);
+    this.setState({ spotifyAlbums: [response.items]})
   }
 
   manipulateAlbums () {
