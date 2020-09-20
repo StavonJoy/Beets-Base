@@ -16,13 +16,13 @@ class LoginPage extends Component {
   };
 
   handleSubmit = async (e) => {
-    const { history, handleSignupOrLogin } = this.props;
+    // const { history, handleSignupOrLogin } = this.props;
     e.preventDefault();
     try {
       await authService.login(this.state);
       // Let <App> know a user has signed up!
-      handleSignupOrLogin();
-      history.push("/");
+      this.props.handleSignupOrLogin();
+      this.props.history.push("/");
     } catch (err) {
       // Use a modal or toast in your apps instead of alert
       alert('Invalid Credentials!');
@@ -30,7 +30,7 @@ class LoginPage extends Component {
   };
 
   render() {
-    const {email, pw} = this.state
+    // const {email, pw} = this.state
     return (
       <main className="Login">
         <h3>Log In</h3>
@@ -39,7 +39,7 @@ class LoginPage extends Component {
             type="text"
             autoComplete="off"
             id="email"
-            value={email}
+            value={this.state.email}
             name="email"
             onChange={this.handleChange}
           />
@@ -48,7 +48,7 @@ class LoginPage extends Component {
             type="password"
             autoComplete="off"
             id="password"
-            value={pw}
+            value={this.state.pw}
             name="pw"
             onChange={this.handleChange}
           />

@@ -17,26 +17,39 @@ class SignupForm extends Component {
     });
   };
 
+  // handleSubmit = async (e) => {
+  //   const { history, updateMessage, handleSignupOrLogin } = this.props;
+  //   e.preventDefault();
+  //   try {
+  //     await authService.signup(this.state);
+  //     // Let <App> know a user has signed up!
+  //     handleSignupOrLogin();
+  //     history.push("/");
+  //   } catch (err) {
+  //     updateMessage(err.message);
+  //   }
+  // };
   handleSubmit = async (e) => {
-    const { history, updateMessage, handleSignupOrLogin } = this.props;
     e.preventDefault();
     try {
       await authService.signup(this.state);
-      // Let <App> know a user has signed up!
-      handleSignupOrLogin();
-      history.push("/");
+      this.props.handleSignupOrLogin();
+      this.props.history.push('/');
     } catch (err) {
-      updateMessage(err.message);
+      this.props.updateMessage(err.message);
     }
-  };
+  }
 
+  // isFormInvalid() {
+  //   const { name, email, password, passwordConf } = this.state;
+  //   return !(name && email && password === passwordConf);
+  // }
   isFormInvalid() {
-    const { name, email, password, passwordConf } = this.state;
-    return !(name && email && password === passwordConf);
+    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
   }
 
   render() {
-    const { name, email, password, passwordConf } = this.state;
+    // const { name, email, password, passwordConf } = this.state;
     return (
       <div>
         <h3>Sign Up</h3>
@@ -45,7 +58,7 @@ class SignupForm extends Component {
             type="text"
             autoComplete="off"
             id="name"
-            value={name}
+            value={this.state.name}
             name="name"
             onChange={this.handleChange}
           />
@@ -54,7 +67,7 @@ class SignupForm extends Component {
             type="text"
             autoComplete="off"
             id="email"
-            value={email}
+            value={this.state.email}
             name="email"
             onChange={this.handleChange}
           />
@@ -63,7 +76,7 @@ class SignupForm extends Component {
             type="password"
             autoComplete="off"
             id="password"
-            value={password}
+            value={this.state.password}
             name="password"
             onChange={this.handleChange}
           />
@@ -72,7 +85,7 @@ class SignupForm extends Component {
             type="password"
             autoComplete="off"
             id="confirm"
-            value={passwordConf}
+            value={this.state.passwordConf}
             name="passwordConf"
             onChange={this.handleChange}
           />
