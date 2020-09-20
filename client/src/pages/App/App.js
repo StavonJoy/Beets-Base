@@ -81,6 +81,9 @@ class App extends Component {
         <Route exact path='/messages' render={() =>
           <MessageBoard />
         } />
+        <Route exact path='/login' render={ () => 
+          <Login />
+        } />
         
         <div>
           Now Playing: { this.state.nowPlaying.name }
