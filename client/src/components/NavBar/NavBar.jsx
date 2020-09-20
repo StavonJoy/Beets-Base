@@ -36,8 +36,14 @@ const NavBar = ({ user, handleLogout }) => {
                 <a class="nav-link" href="/messages">Message Board</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href='http://localhost:8888' > Login to Spotify </a>
+                <a class="nav-link" href="/login">Login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign Up</a>
+            </li>
+            {/* <li class="nav-item">
+                <a class="nav-link" href='http://localhost:8888' > Login to Spotify </a>
+            </li> */}
             <a href="/"><img className="nav-logo" src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
           </ul>
           </div>
